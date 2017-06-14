@@ -17,7 +17,7 @@
     ]
   ],
   "env": {
-    "prod": {
+    "production": {
       "plugins": [
         "transform-remove-console"
       ]

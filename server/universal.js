@@ -8,7 +8,7 @@ const { StaticRouter } = require('react-router-dom')
 
 import configureStore from './../src/redux/create'
 import ApiClient from './../src/utils/ApiClient'
-import App from './../src/containers/App'
+import App from './../src/containers/App/App'
 
 const { matchPath } = require('react-router-dom')
 
