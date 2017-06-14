@@ -46,7 +46,9 @@ SSR is not available in if you run `yarn start`. It's only available if you run 
 
 Hot reload is only supported if you run `npm start`.
 
-Notice that this boilerplate uses some codes from [ssr-create-react-app-v2](github.com/ayroblu/ssr-create-react-app-v2) and [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example) without any commercial purpose.
+### Notice
+
+This boilerplate uses some codes from [ssr-create-react-app-v2](github.com/ayroblu/ssr-create-react-app-v2) and [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example) without any commercial purpose.
 
 But please do let me know if this meets `copyright infringement`!
 
