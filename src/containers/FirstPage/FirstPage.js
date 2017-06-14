@@ -56,7 +56,6 @@ class FirstPage extends Component {
 
   render() {
     const b64 = this.props.staticContext ? 'wait for it' : window.btoa('wait for it')
-    let data = {};
     return (
       <div className='bold'>
         <h2>First Page</h2>
