@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "env",
+    "react-app",
+    "es2015"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-class-properties",
+    [
+      "resolver",
+      {
+        "resolveDirs": [
+          "src"
+        ]
+      }
+    ]
+  ],
+  "env": {
+    "prod": {
+      "plugins": [
+        "transform-remove-console"
+      ]
+    }
+  }
+}
