@@ -44,6 +44,7 @@ class FirstPage extends Component {
   }
 
   componentDidMount() {
+    console.log('FirstPage mounted. This log should only be visible in development mode');
     // if rendered initially, we already have data from the server
     // but when navigated to in the client, we need to fetch
     if (!this.state.data) {
