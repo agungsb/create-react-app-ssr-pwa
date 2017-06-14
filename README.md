@@ -44,7 +44,7 @@ SSR is not available in if you run `yarn start`. It's only available if you run 
 
 ### Hot Reload
 
-Hot reload is only supported if you run `npm start`.
+Hot reload is only supported if you run `yarn start`.
 
 Notice
 ------
