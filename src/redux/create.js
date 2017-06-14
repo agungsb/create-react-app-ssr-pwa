@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './reducers'
-import createMiddleware from './createMiddleware';
+import clientMiddleware from './middlewares/clientMiddleware';
 //import createLogger from 'redux-logger'
 //import createSagaMiddleware from 'redux-saga'
 
@@ -10,7 +10,7 @@ import createMiddleware from './createMiddleware';
 export default function configureStore(client, initialState = {}) {
   // Create the store with two middlewares
   const middlewares = [
-    createMiddleware(client)
+    clientMiddleware(client)
     //  sagaMiddleware
     //, logger
   ]

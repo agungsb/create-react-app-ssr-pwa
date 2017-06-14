@@ -7,8 +7,8 @@ import './index.css';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import ApiClient from './ApiClient'
-import configureStore from './store'
+import ApiClient from './utils/ApiClient'
+import configureStore from './redux/create'
 
 // Let the reducers handle initial state
 const initialState = {};

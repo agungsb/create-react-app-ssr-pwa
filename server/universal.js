@@ -6,8 +6,8 @@ const { Provider } = require('react-redux')
 const { renderToString } = require('react-dom/server')
 const { StaticRouter } = require('react-router-dom')
 
-import configureStore from './../src/store'
-import ApiClient from './../src/ApiClient'
+import configureStore from './../src/redux/create'
+import ApiClient from './../src/utils/ApiClient'
 import App from './../src/containers/App'
 
 const { matchPath } = require('react-router-dom')
@@ -16,7 +16,6 @@ const routes = require('./../src/utils/routes')
 
 module.exports = function universalLoader(req, res) {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html')
-  console.log(filePath);
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
       console.error('read err', err)
@@ -58,7 +57,6 @@ module.exports = function universalLoader(req, res) {
       if (match) {
         // console.log('req.url', req.url);
         if (req.url === route.path) { // Only do this if the route and the req is matched
-          console.log('route.component', route);
           if (route.component.fetchData) { // Only do if the container has fetchData method
             const requests = route.component.fetchData(match);
             for (let i = 0; i < requests.length; i++) {

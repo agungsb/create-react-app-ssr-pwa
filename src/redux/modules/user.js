@@ -1,16 +1,13 @@
-import { SET, RESET } from '../types/user'
-const LOAD = 'LOAD';
-const LOAD_SUCCESS = 'LOAD_SUCCESS';
-const LOAD_FAIL = 'LOAD_FAIL';
+const SET = 'modules/user/SET';
+const RESET = 'modules/user/RESET';
+const LOAD = 'modules/user/LOAD';
+const LOAD_SUCCESS = 'modules/user/LOAD_SUCCESS';
+const LOAD_FAIL = 'modules/user/LOAD_FAIL';
 
 const initialState = {
   loaded: false,
   loading: false,
-  email: 'user@example.com',
-  userId: 1,
-  id: 1,
-  title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+  email: 'user@example.com'
 }
 
 export default function reducer(state = initialState, action) {
@@ -21,7 +18,6 @@ export default function reducer(state = initialState, action) {
         loading: true,
       }
     case LOAD_SUCCESS:
-      console.log('sukses');
       return {
         ...state,
         loaded: true,
@@ -40,6 +36,26 @@ export default function reducer(state = initialState, action) {
       return { ...initialState }
     default:
       return state
+  }
+}
+
+export function tes() {
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: client => client.get('https://jsonplaceholder.typicode.com/posts/3')
+  }
+}
+
+export function set(payload) {
+  return {
+    type: SET,
+    payload
+  }
+}
+
+export function reset() {
+  return {
+    type: RESET
   }
 }
 
