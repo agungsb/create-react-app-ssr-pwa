@@ -36,11 +36,11 @@ yarn start
 
 ### PWA
 
-By default, the PWA feature is active. But if you don't want to use it, you can deactivate it in `src/index.js` by removing `registerServiceWorker()` function. 
+By default, the PWA feature is active. But if you don't want to use it, you can deactivate it by removing `registerServiceWorker()` function inside `src/index.js`.
 
 ### SSR
 
-SSR is not available in if you run `yarn start`. It's only available if you run `yarn run build && yarn run start:server` or `yarn build && yarn run now-start`.
+SSR is not available in if you run `yarn start`. It's only available if you run `yarn run build && yarn run start:server` or `yarn run build && yarn run now-start`.
 
 ### Hot Reload
 
