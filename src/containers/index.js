@@ -1,8 +1,18 @@
-const containers = {
-  App: require('./App/App'),
-  FirstPage: require('./FirstPage/FirstPage'),
-  NotFound: require('./NotFound/NotFound'),
-  SecondPage: require('./SecondPage/SecondPage')
-}
+// const containers = {
+//   App: require('./App/App'),
+//   FirstPage: require('./FirstPage/FirstPage'),
+//   NotFound: require('./NotFound/NotFound'),
+//   SecondPage: require('./SecondPage/SecondPage')
+// }
 
-export default containers;
+import App from './App/App';
+import FirstPage from './FirstPage/FirstPage';
+import NotFound from './NotFound/NotFound';
+import SecondPage from './SecondPage/SecondPage';
+
+export {
+ App,
+ FirstPage,
+ NotFound,
+ SecondPage 
+};

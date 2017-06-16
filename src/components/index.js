@@ -1,6 +1,12 @@
-const components = {
-  Footer: require('./Footer/Footer'),
-  NoMatch: require('./NoMatch/NoMatch')
-}
+// const components = {
+//   Footer: require('./Footer/Footer'),
+//   NoMatch: require('./NoMatch/NoMatch')
+// }
 
-export default components;
+import Footer from './Footer/Footer';
+import NoMatch from './NoMatch/NoMatch';
+
+export {
+  Footer,
+  NoMatch
+};

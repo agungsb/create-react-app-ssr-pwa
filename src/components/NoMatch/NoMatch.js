@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Footer from './../Footer/Footer';
 
 export default class NoMatch extends Component {
