@@ -1,10 +1,8 @@
-import {
-  FirstPage,
-  NotFound,
-  SecondPage,
-} from 'containers';
+import FirstPage from 'containers/FirstPage/FirstPage';
+import NotFound from 'containers/NotFound/NotFound';
+import SecondPage from 'containers/SecondPage/SecondPage';
 
-var TheRoutes = [
+const TheRoutes = [
   {
     path: '/',
     exact: true,

@@ -1,13 +1,11 @@
 {
   "presets": [
     "env",
-    "react-app",
-    "es2015"
+    "react-app"
   ],
   "plugins": [
     "add-module-exports",
-    "transform-runtime",
-    "transform-class-properties"
+    "transform-runtime"
   ],
   "env": {
     "development": {
