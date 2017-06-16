@@ -6,11 +6,18 @@ const morgan = require('morgan')
 const path = require('path')
 const fs = require('fs')
 
-require('babel-register')({
-  ignore: /\/(build|node_modules)\//,
-  presets: ['env', 'react-app', 'es2015'],
-  plugins: ["add-module-exports", "transform-class-properties"]
-})
+var babelrc = fs.readFileSync(path.resolve(__dirname, '..', '.babelrc'));
+var config;
+
+try {
+  config = JSON.parse(babelrc);
+  config.ignore = /\/(build|node_modules)\//;
+} catch (err) {
+  console.error('==>     ERROR: Error parsing your .babelrc.');
+  console.error(err);
+}
+
+require('babel-register')(config);
 
 // routes
 const index = require('./routes/index')

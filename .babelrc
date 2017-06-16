@@ -6,19 +6,28 @@
   ],
   "plugins": [
     "add-module-exports",
-    "transform-class-properties",
-    [
-      "resolver",
-      {
-        "resolveDirs": [
-          "src"
-        ]
-      }
-    ]
+    "transform-runtime",
+    "transform-class-properties"
   ],
   "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-alias",
+          {
+            "config": "./config/webpack.config.dev.js"
+          }
+        ]
+      ]
+    },
     "production": {
       "plugins": [
+        [
+          "babel-plugin-webpack-alias",
+          {
+            "config": "./config/webpack.config.prod.js"
+          }
+        ],
         "transform-remove-console"
       ]
     }

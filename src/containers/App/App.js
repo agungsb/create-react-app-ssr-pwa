@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import routes from 'utils/routes';
+import TheRoutes from 'utils/TheRoutes';
 
 const PropsRoute = ({ component: Component, initialData, ...rest }) => (
   <Route {...rest} render={props => (
@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Switch>
-        {routes.map((route, key) => {
+        {TheRoutes.map((route, key) => {
           return (
             <PropsRoute {...route} key={key} initialData={this.props.initialData} />
           )

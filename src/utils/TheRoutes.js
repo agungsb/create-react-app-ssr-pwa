@@ -1,10 +1,10 @@
 import {
   FirstPage,
-  NoMatch,
+  NotFound,
   SecondPage,
 } from 'containers';
 
-const routes = [
+var TheRoutes = [
   {
     path: '/',
     exact: true,
@@ -15,8 +15,8 @@ const routes = [
     component: SecondPage,
   },
   {
-    component: NoMatch
+    component: NotFound
   }
 ];
 
-export default routes;
+export default TheRoutes;

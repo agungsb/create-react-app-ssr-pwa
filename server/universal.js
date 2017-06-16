@@ -12,7 +12,7 @@ import App from './../src/containers/App/App'
 
 const { matchPath } = require('react-router-dom')
 
-const routes = require('./../src/utils/routes')
+const TheRoutes = require('utils/TheRoutes')
 
 module.exports = function universalLoader(req, res) {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html')
@@ -51,11 +51,13 @@ module.exports = function universalLoader(req, res) {
 
     let promises = [];
 
-    routes.some(route => {
+    // console.log('TheRoutes', TheRoutes);
+    TheRoutes.some(route => {
       // use `matchPath` here
       const match = matchPath(req.url, route);
       if (match) {
         // console.log('req.url', req.url);
+        // console.log(route.component);
         if (req.url === route.path) { // Only do this if the route and the req is matched
           if (route.component.fetchData) { // Only do if the container has fetchData method
             const requests = route.component.fetchData(match);

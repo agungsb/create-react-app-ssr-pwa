@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-//import './App.css'
+import Footer from './../Footer/Footer';
 
-class NoMatch extends Component {
+export default class NoMatch extends Component {
   render() {
     return (
       <div>
         Sorry, page not found
+        <Footer />
       </div>
     )
   }
 }
-
-export default NoMatch
 
