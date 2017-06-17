@@ -66,7 +66,7 @@
     "dev": "NODE_ENV=development node server/index.js",
     "prod": "NODE_ENV=production node server/index.js",
     "win-dev": "set NODE_ENV=development&&node server/index.js",
-    "win-prod": "set NODE_ENV=development&&node server/index.js"
+    "win-prod": "set NODE_ENV=production&&node server/index.js"
   },
   "jest": {
     "collectCoverageFrom": [
