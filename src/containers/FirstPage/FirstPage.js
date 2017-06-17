@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-// import * as userActions from 'redux-modules/user'
-import * as userActions from './../../redux/modules/user';
+import * as userActions from 'redux-modules/modules/user'
+import Footer from 'components/Footer/Footer';
+// import * as userActions from 'redux/modules/user';
 import { Link } from 'react-router-dom'
 import './FirstPage.css'
 
@@ -73,6 +74,7 @@ class FirstPage extends Component {
           );
         })
         }
+        <Footer />
       </div>
     )
   }

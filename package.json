@@ -65,7 +65,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "dev": "NODE_ENV=development node server/index.js",
     "prod": "NODE_ENV=production node server/index.js",
-    "win-dev": "set NODE_ENV=development & node server/index.js"
+    "win-dev": "set NODE_ENV=development&&node server/index.js",
+    "win-prod": "set NODE_ENV=development&&node server/index.js"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -89,8 +90,7 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^redux-modules/user$": "<rootDir>/src/redux/modules/user.js"
+      "^react-native$": "react-native-web"
     }
   },
   "eslintConfig": {

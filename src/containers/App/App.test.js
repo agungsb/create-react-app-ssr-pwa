@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 import ApiClient from './../../utils/ApiClient'
-import configureStore from './../../redux/create'
+import configureStore from './../../redux-modules/create'
 
 // Let the reducers handle initial state
 const initialState = {};

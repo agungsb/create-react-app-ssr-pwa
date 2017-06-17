@@ -6,7 +6,7 @@ const { Provider } = require('react-redux')
 const { renderToString } = require('react-dom/server')
 const { StaticRouter } = require('react-router-dom')
 
-import configureStore from './../src/redux/create'
+import configureStore from './../src/redux-modules/create'
 import ApiClient from './../src/utils/ApiClient'
 import App from './../src/containers/App/App'
 

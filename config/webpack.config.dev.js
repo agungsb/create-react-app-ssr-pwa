@@ -89,7 +89,7 @@ module.exports = {
       'components': path.resolve(__dirname, '..', paths.appSrc, 'components'),
       'containers': path.resolve(__dirname, '..', paths.appSrc, 'containers'),
       'utils': path.resolve(__dirname, '..', paths.appSrc, 'utils'),
-      'redux-modules': path.resolve(__dirname, '..', paths.appSrc, 'redux', 'modules'),
+      'redux-modules': path.resolve(__dirname, '..', paths.appSrc, 'redux-modules'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',

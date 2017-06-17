@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-// import * as userActions from 'redux-modules/user'
-import * as userActions from './../../redux/modules/user';
+import * as userActions from 'redux-modules/modules/user'
+// import * as userActions from './../../redux/modules/user';
 import { Link } from 'react-router-dom'
 import './SecondPage.css'
 
