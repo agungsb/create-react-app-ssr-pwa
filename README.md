@@ -21,17 +21,32 @@ yarn install
 
 ### Run SSR in development:
 ```
-yarn run build && yarn run start:server
+yarn run dev
+```
+
+### Run SSR in development (Windows):
+```
+yarn run win-dev
 ```
 
 ### Run SSR in production:
 ```
-yarn run build && yarn run now-start
+yarn run prod
+```
+
+### Run SSR in production (Windows):
+```
+yarn run win-prod
 ```
 
 ### Run in development (No SSR):
 ```
 yarn start
+```
+
+### Run build (No SSR):
+```
+yarn build
 ```
 
 ### PWA
@@ -40,7 +55,7 @@ By default, the PWA feature is active. But if you don't want to use it, you can 
 
 ### SSR
 
-SSR is not available in if you run `yarn start`. It's only available if you run `yarn run build && yarn run start:server` or `yarn run build && yarn run now-start`.
+SSR is not available in if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`.
 
 ### Hot Reload
 
