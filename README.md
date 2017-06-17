@@ -19,6 +19,11 @@ This boilerplate is similar as [ssr-create-react-app-v2](github.com/ayroblu/ssr-
 yarn install
 ```
 
+### Run build:
+```
+yarn build
+```
+
 ### Run SSR in development:
 ```
 yarn run dev
@@ -42,11 +47,6 @@ yarn run win-prod
 ### Run in development (No SSR):
 ```
 yarn start
-```
-
-### Run build (No SSR):
-```
-yarn build
 ```
 
 ### PWA
