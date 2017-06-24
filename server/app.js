@@ -5,6 +5,7 @@ const express = require('express')
 const morgan = require('morgan')
 const path = require('path')
 const fs = require('fs')
+const csshook = require('css-modules-require-hook/preset') // import hook before routes
 
 var babelrc = fs.readFileSync(path.resolve(__dirname, '..', '.babelrc'));
 var config;
