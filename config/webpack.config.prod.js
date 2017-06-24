@@ -179,6 +179,24 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
+        include: paths.appGlobalStyles,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                importLoaders: 1,
+                minimize: true,
+                sourceMap: true,
+              },
+            }
+          ]
+        })
+      },
+      {
+        test: /\.css$/,
+        exclude: paths.appGlobalStyles,
         loader: ExtractTextPlugin.extract(
           Object.assign(
             {

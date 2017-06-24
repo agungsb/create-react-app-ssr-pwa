@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
-import '.global-styles/index.css';
+import './global-styles/index.css';
 // import '!style-loader!css-loader!./global-styles/index.css';
 
 import { Provider } from 'react-redux'

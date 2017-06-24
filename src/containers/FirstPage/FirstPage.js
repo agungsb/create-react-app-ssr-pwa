@@ -59,9 +59,9 @@ class FirstPage extends Component {
   render() {
     const b64 = this.props.staticContext ? 'wait for it' : window.btoa('wait for it')
     return (
-      <div className={styles.bold}>
-        <h2>First Page</h2>
-        <p>{`Email: ${this.props.user.email}`}</p>
+      <div>
+        <h2 className={styles.bold}>First Page</h2>
+        <p className="bolder">{`Email: ${this.props.user.email}`}</p>
         <p>{`b64: ${b64}`}</p>
         <Link to={'/second'}>Second</Link><br />
         <p><strong>The text below is a prefetched SSR data:</strong></p>
