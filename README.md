@@ -76,3 +76,7 @@ Contribute
 ----------
 
 If you have any idea to improve this boilerplate, especially to solve the limitation that this boilerplate has, please feel free to contribute! Thanks.
+
+Thanksdf
+------
+- [Akbarkn](https://github.com/akbarkn)
