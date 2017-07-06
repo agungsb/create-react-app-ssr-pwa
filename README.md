@@ -55,11 +55,15 @@ By default, the PWA feature is active. But if you don't want to use it, you can 
 
 ### SSR
 
-SSR is not available in if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`.
+SSR is not available in if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`. But you have to run `yarn build` first.
 
 ### Hot Reload
 
 Hot reload is only supported if you run `yarn start`.
+
+### CSS Modules
+
+CSS Modules is supported, even in SSR mode.. (*yeay!)
 
 Notice
 ------
