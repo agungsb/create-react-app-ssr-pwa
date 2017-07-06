@@ -55,7 +55,7 @@ By default, the PWA feature is active. But if you don't want to use it, you can 
 
 ### SSR
 
-SSR is not available in if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`. But you have to run `yarn build` first.
+SSR is not available if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`. But you have to run `yarn build` first.
 
 ### Hot Reload
 
