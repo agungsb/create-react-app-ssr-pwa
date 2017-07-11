@@ -182,6 +182,20 @@ module.exports = {
       // in development "style" loader enables hot editing of CSS.
       {
         test: /\.css$/,
+        include: paths.appGlobalStyles,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1
+            },
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: paths.appGlobalStyles,
         use: [
           require.resolve('style-loader'),
           {
