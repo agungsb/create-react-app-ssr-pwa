@@ -1,20 +1,22 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+
+import './global-styles/index.css';
+// import '!style-loader!css-loader!./global-styles/index.css';
 
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 import ApiClient from './utils/ApiClient'
-import configureStore from './redux/create'
+import configureStore from './redux-modules/create'
 
 // Let the reducers handle initial state
 const initialState = {};
 const client = new ApiClient();
-const store = configureStore(client, initialState)
-
+const store = configureStore(client, initialState);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

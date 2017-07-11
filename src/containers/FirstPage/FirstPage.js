@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as userActions from 'redux/modules/user'
+import * as userActions from 'redux-modules/modules/user'
+import Footer from 'components/Footer/Footer';
+// import * as userActions from 'redux/modules/user';
 import { Link } from 'react-router-dom'
-import './FirstPage.css'
 
 import request from 'superagent';
+const styles = require('./FirstPage.css');
 
 class FirstPage extends Component {
 
@@ -57,9 +59,9 @@ class FirstPage extends Component {
   render() {
     const b64 = this.props.staticContext ? 'wait for it' : window.btoa('wait for it')
     return (
-      <div className='bold'>
-        <h2>First Page</h2>
-        <p>{`Email: ${this.props.user.email}`}</p>
+      <div>
+        <h2 className={styles.bold}>First Page</h2>
+        <p className="bolder">{`Email: ${this.props.user.email}`}</p>
         <p>{`b64: ${b64}`}</p>
         <Link to={'/second'}>Second</Link><br />
         <p><strong>The text below is a prefetched SSR data:</strong></p>
@@ -72,6 +74,7 @@ class FirstPage extends Component {
           );
         })
         }
+        <Footer />
       </div>
     )
   }

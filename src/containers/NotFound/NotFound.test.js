@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import NotFound from './NotFound';
 
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
@@ -14,11 +14,12 @@ const client = new ApiClient();
 const store = configureStore(client, initialState);
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
+  const div = document.createElement('div')
   ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <NotFound />
     </BrowserRouter>
-  </Provider>, div);
-});
+  </Provider>, div)
+})
+

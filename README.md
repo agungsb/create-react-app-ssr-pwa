@@ -19,14 +19,29 @@ This boilerplate is similar as [ssr-create-react-app-v2](github.com/ayroblu/ssr-
 yarn install
 ```
 
+### Run build:
+```
+yarn build
+```
+
 ### Run SSR in development:
 ```
-yarn run build && yarn run start:server
+yarn run dev
+```
+
+### Run SSR in development (Windows):
+```
+yarn run win-dev
 ```
 
 ### Run SSR in production:
 ```
-yarn run build && yarn run now-start
+yarn run prod
+```
+
+### Run SSR in production (Windows):
+```
+yarn run win-prod
 ```
 
 ### Run in development (No SSR):
@@ -36,15 +51,19 @@ yarn start
 
 ### PWA
 
-By default, the PWA feature is active. But if you don't want to use it, you can deactivate it in `src/index.js` by removing `registerServiceWorker()` function. 
+By default, the PWA feature is active. But if you don't want to use it, you can deactivate it by removing `registerServiceWorker()` function inside `src/index.js`.
 
 ### SSR
 
-SSR is not available in if you run `yarn start`. It's only available if you run `yarn run build && yarn run start:server` or `yarn build && yarn run now-start`.
+SSR is not available if you run `yarn start`. It's only available if you run `yarn run dev` or `yarn run prod`. But you have to run `yarn build` first.
 
 ### Hot Reload
 
 Hot reload is only supported if you run `yarn start`.
+
+### CSS Modules
+
+CSS Modules is supported, even in SSR mode.. (*yeay!)
 
 Notice
 ------
@@ -57,3 +76,7 @@ Contribute
 ----------
 
 If you have any idea to improve this boilerplate, especially to solve the limitation that this boilerplate has, please feel free to contribute! Thanks.
+
+Thanks To
+---------
+- [Akbarkn](https://github.com/akbarkn)

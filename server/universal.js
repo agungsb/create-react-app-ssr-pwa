@@ -6,13 +6,13 @@ const { Provider } = require('react-redux')
 const { renderToString } = require('react-dom/server')
 const { StaticRouter } = require('react-router-dom')
 
-import configureStore from './../src/redux/create'
+import configureStore from './../src/redux-modules/create'
 import ApiClient from './../src/utils/ApiClient'
 import App from './../src/containers/App/App'
 
 const { matchPath } = require('react-router-dom')
 
-const routes = require('./../src/utils/routes')
+const TheRoutes = require('utils/TheRoutes')
 
 module.exports = function universalLoader(req, res) {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html')
@@ -51,11 +51,13 @@ module.exports = function universalLoader(req, res) {
 
     let promises = [];
 
-    routes.some(route => {
+    // console.log('TheRoutes', TheRoutes);
+    TheRoutes.some(route => {
       // use `matchPath` here
       const match = matchPath(req.url, route);
       if (match) {
         // console.log('req.url', req.url);
+        // console.log(route.component);
         if (req.url === route.path) { // Only do this if the route and the req is matched
           if (route.component.fetchData) { // Only do if the container has fetchData method
             const requests = route.component.fetchData(match);
@@ -88,7 +90,7 @@ module.exports = function universalLoader(req, res) {
 
       if (context.url) {
         // Somewhere a `<Redirect>` was rendered
-        redirect(301, context.url)
+        res.redirect(301, context.url)
       } else {
         // we're good, send the response
         const RenderedApp = htmlData.replace('{{SSR}}', markup).replace('{{WINDOW_DATA}}', JSON.stringify(data));
