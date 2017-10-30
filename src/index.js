@@ -14,7 +14,7 @@ import ApiClient from './utils/ApiClient'
 import configureStore from './redux-modules/create'
 
 // Let the reducers handle initial state
-const initialState = {};
+const initialState = window.DATA;
 const client = new ApiClient();
 const store = configureStore(client, initialState);
 ReactDOM.render(
@@ -24,4 +24,4 @@ ReactDOM.render(
     </BrowserRouter>
   </Provider>, document.getElementById('root')
 );
-registerServiceWorker();
+// registerServiceWorker();

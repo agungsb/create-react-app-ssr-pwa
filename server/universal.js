@@ -7,8 +7,10 @@ const { renderToString } = require('react-dom/server')
 const { StaticRouter } = require('react-router-dom')
 
 import configureStore from './../src/redux-modules/create'
+import Helmet from 'react-helmet';
 import ApiClient from './../src/utils/ApiClient'
 import App from './../src/containers/App/App'
+const client = new ApiClient();
 
 const { matchPath } = require('react-router-dom')
 
@@ -20,6 +22,48 @@ module.exports = function universalLoader(req, res) {
     if (err) {
       console.error('read err', err)
       return res.status(404).end()
+    }
+
+    function renderToClient(promises, req, res, htmlData, store) {
+      Promise.all(promises).then(success => {
+        // const data = success && success.length > 0 ? success[0].data : null;
+        const data = store.getState();
+        // console.log('i am last', data);
+        // do something w/ the data so the client
+        // can access it then render the app
+        const context = {}
+
+        // Create a styleManager instance.
+
+        const markup = renderToString(
+          <Provider store={store}>
+            <StaticRouter
+              location={req.url}
+              context={context}>
+              <App initialData={data} />
+            </StaticRouter>
+          </Provider>
+        )
+        let head = Helmet.rewind();
+
+        if (context.url) {
+          // Somewhere a `<Redirect>` was rendered
+          res.redirect(301, context.url)
+        } else {
+          // we're good, send the response
+          const RenderedApp = htmlData
+            .replace('<meta/>', head.meta)
+            .replace('<link/>', head.link)
+            .replace('{{SSR}}', markup)
+            .replace('{{WINDOW_DATA}}', JSON.stringify(data));
+          res.send(RenderedApp)
+        }
+      }, (error) => {
+        // handleError(res, error);
+        // throw new Error(res, error);
+        res.status(200).send(store.getState());
+        // res.redirect(301, '/');
+      });
     }
 
     // we'd probably want some recursion here so our routes could have
@@ -49,6 +93,7 @@ module.exports = function universalLoader(req, res) {
 
     // const promises = matches.map((match) => match.promise)
 
+    const store = configureStore(client);
     let promises = [];
 
     // console.log('TheRoutes', TheRoutes);
@@ -62,7 +107,11 @@ module.exports = function universalLoader(req, res) {
           if (route.component.fetchData) { // Only do if the container has fetchData method
             const requests = route.component.fetchData(match);
             for (let i = 0; i < requests.length; i++) {
-              promises.push(requests[i]);
+              let fields;
+              if (requests[i].fields) {
+                fields = { ...requests[i].fields };
+              }
+              promises.push(store.dispatch(requests[i]));
             }
           }
         }
@@ -71,35 +120,7 @@ module.exports = function universalLoader(req, res) {
       }
       return match;
     });
-    // console.log('promises', promises);
-    Promise.all(promises).then(data => {
-      // do something w/ the data so the client
-      // can access it then render the app
-      const context = {}
-      const client = new ApiClient();
-      const store = configureStore(client)
-      const markup = renderToString(
-        <Provider store={store}>
-          <StaticRouter
-            location={req.url}
-            context={context}>
-            <App initialData={data} />
-          </StaticRouter>
-        </Provider>
-      )
-
-      if (context.url) {
-        // Somewhere a `<Redirect>` was rendered
-        res.redirect(301, context.url)
-      } else {
-        // we're good, send the response
-        const RenderedApp = htmlData.replace('{{SSR}}', markup).replace('{{WINDOW_DATA}}', JSON.stringify(data));
-        res.send(RenderedApp)
-      }
-    }, (error) => {
-      // handleError(res, error)
-      throw new Error(res, error);
-    })
+    renderToClient(promises, req, res, htmlData, store);
   })
 }
 

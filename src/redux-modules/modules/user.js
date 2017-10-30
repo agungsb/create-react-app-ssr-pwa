@@ -4,11 +4,7 @@ const LOAD = 'modules/user/LOAD';
 const LOAD_SUCCESS = 'modules/user/LOAD_SUCCESS';
 const LOAD_FAIL = 'modules/user/LOAD_FAIL';
 
-const initialState = {
-  loaded: false,
-  loading: false,
-  email: 'user@example.com'
-}
+const initialState = null;
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -39,17 +35,10 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function tes() {
+export function get(id = 1) {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client.get('https://jsonplaceholder.typicode.com/posts/3')
-  }
-}
-
-export function set(payload) {
-  return {
-    type: SET,
-    payload
+    promise: client => client.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
   }
 }
 

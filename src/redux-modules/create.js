@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './reducers'
 import clientMiddleware from './middlewares/clientMiddleware';
+import { composeWithDevTools } from 'redux-devtools-extension';
 //import createLogger from 'redux-logger'
 //import createSagaMiddleware from 'redux-saga'
 
@@ -22,7 +23,7 @@ export default function configureStore(client, initialState = {}) {
   const store = createStore(
     reducers
     , initialState
-    , compose(...enhancers)
+    , composeWithDevTools(...enhancers)
   )
 
   // Extensions

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as userActions from 'redux-modules/modules/user'
+import Seo from 'components/Seo/Seo';
 import Footer from 'components/Footer/Footer';
 // import * as userActions from 'redux/modules/user';
 import { Link } from 'react-router-dom'
 
 import request from 'superagent';
+const { get } = userActions;
 const styles = require('./FirstPage.css');
 
 class FirstPage extends Component {
@@ -16,63 +19,62 @@ class FirstPage extends Component {
   static fetchData(match) {
     // going to want `match` in here for params, etc.
     const promises = [
-      request.get('https://jsonplaceholder.typicode.com/posts/2'),
-      request.get('https://jsonplaceholder.typicode.com/posts/3'),
-      request.get('https://jsonplaceholder.typicode.com/posts/4')
+      get(1)
     ];
     return promises;
-    // return new Promise((resolve, reject) => {
-    //   request.get('https://jsonplaceholder.typicode.com/posts/2').end((err, success) => {
-    //     if (err) {
-    //       reject(err);
-    //     }
-    //     resolve(success.body);
-    //   });
-    // });
   }
 
   constructor(props) {
     super(props);
-    let data = null;
-    if (this.props.initialData) {
-      if (this.props.initialData.length > 0) {
-        data = this.props.initialData;
-      }
+    let user = null;
+    if (props.user) {
+      user = props.user;
     }
     this.state = {
       // if this is rendered initially we get data from the server render
-      data
+      user
+    }
+  }
+
+  componentWillMount() {
+    // if rendered initially, we already have data from the server
+    // but when navigated to in the client, we need to fetch
+    if (this.props.user === null) {
+      this.props.userActions.get(1);
     }
   }
 
   componentDidMount() {
-    console.log('FirstPage mounted. This log should only be visible in development mode');
-    // if rendered initially, we already have data from the server
-    // but when navigated to in the client, we need to fetch
-    if (!this.state.data) {
-      Promise.all(this.constructor.fetchData(this.props.match)).then(data => {
-        this.setState({ data })
-      })
+    console.log('FirstPage mounted. This log should only be visible in development mode', this.props.initialData);
+    if (this.props.user) {
+      // if rendered initially, we already have data from the server
+      this.setState({ user: this.props.user });
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { user } = this.props;
+    if (nextProps.user) {
+      user = nextProps.user;
+    }
+    this.setState({ user });
+  }
+
   render() {
+    const { user } = this.state;
     const b64 = this.props.staticContext ? 'wait for it' : window.btoa('wait for it')
     return (
       <div>
+        <Seo />
         <h2 className={styles.bold}>First Page</h2>
         <p className="bolder">{`Email: ${this.props.user.email}`}</p>
         <p>{`b64: ${b64}`}</p>
         <Link to={'/second'}>Second</Link><br />
         <p><strong>The text below is a prefetched SSR data:</strong></p>
-        {this.state.data && this.state.data.map((d, k) => {
-          const data = JSON.parse(d.text)
-          return (
-            <h2 key={k}>
-              {data.id} - {data.title}
-            </h2>
-          );
-        })
+        {user && user.loaded && 
+          <h2>
+            {user.id} - {user.title}
+          </h2>
         }
         <Footer />
       </div>
@@ -88,7 +90,7 @@ const mapDispatchToProps = dispatch => ({
   userActions: bindActionCreators(userActions, dispatch)
 })
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(FirstPage)
+)(FirstPage))
