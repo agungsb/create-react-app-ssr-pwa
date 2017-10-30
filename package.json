@@ -62,12 +62,15 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "NODE_ENV=production node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "dev": "NODE_ENV=development node server/index.js",
     "prod": "NODE_ENV=production node server/index.js",
     "win-dev": "set NODE_ENV=development&&node server/index.js",
-    "win-prod": "set NODE_ENV=production&&node server/index.js"
+    "win-prod": "set NODE_ENV=production&&node server/index.js",
+    "build-dev": "NODE_ENV=development node scripts/build.js",
+    "heroku-prebuild": "NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true NODE_ENV=production"
   },
   "jest": {
     "collectCoverageFrom": [
