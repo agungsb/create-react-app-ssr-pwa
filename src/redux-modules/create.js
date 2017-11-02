@@ -1,4 +1,8 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import {
+  createStore,
+  applyMiddleware,
+  // compose
+} from 'redux'
 import reducers from './reducers'
 import clientMiddleware from './middlewares/clientMiddleware';
 import { composeWithDevTools } from 'redux-devtools-extension';

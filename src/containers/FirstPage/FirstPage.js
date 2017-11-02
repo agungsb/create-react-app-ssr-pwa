@@ -9,7 +9,6 @@ import Footer from 'components/Footer/Footer';
 // import * as userActions from 'redux/modules/user';
 import { Link } from 'react-router-dom'
 
-import request from 'superagent';
 const { get } = userActions;
 const styles = require('./FirstPage.css');
 
@@ -67,11 +66,10 @@ class FirstPage extends Component {
       <div>
         <Seo />
         <h2 className={styles.bold}>First Page</h2>
-        <p className="bolder">{`Email: ${this.props.user.email}`}</p>
         <p>{`b64: ${b64}`}</p>
         <Link to={'/second'}>Second</Link><br />
         <p><strong>The text below is a prefetched SSR data:</strong></p>
-        {user && user.loaded && 
+        {user && user.loaded &&
           <h2>
             {user.id} - {user.title}
           </h2>
