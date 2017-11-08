@@ -7,7 +7,11 @@
   "plugins": [
     "add-module-exports",
     "transform-runtime",
-    "transform-class-properties"
+    "transform-class-properties",
+    "syntax-dynamic-import",
+    ["import-inspector", {
+      "serverSideRequirePath": true
+    }]
   ],
   "env": {
     "test": {

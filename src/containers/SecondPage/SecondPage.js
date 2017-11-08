@@ -27,7 +27,7 @@ class SecondPage extends Component {
         <NavLink to="/second" exact activeClassName={styles.active}>Profile Page</NavLink>
         <NavLink to="/second/about" activeClassName={styles.active}>About Page</NavLink>
         <Switch>
-          {SecondPageRoutes.map((route, key) =>
+          {SecondPageRoutes.map((route, key) => 
             <CustomPropsRoute {...route} key={key} initialData={this.props.initialData} />
           )}
         </Switch>
