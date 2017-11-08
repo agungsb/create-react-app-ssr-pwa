@@ -4,8 +4,11 @@ import { bindActionCreators } from 'redux'
 
 import * as userActions from 'redux-modules/modules/user'
 // import * as userActions from './../../redux/modules/user';
-import { Link } from 'react-router-dom'
-import './SecondPage.css'
+import { Link, NavLink, Switch } from 'react-router-dom'
+import { CustomPropsRoute } from 'components'
+import { SecondPageRoutes } from 'utils/TheRoutes'
+
+const styles = require('./SecondPage.css');
 
 class SecondPage extends Component {
   componentWillMount() {
@@ -21,6 +24,13 @@ class SecondPage extends Component {
             {this.props.user.id} - {this.props.user.title}
           </h2>
         }
+        <NavLink to="/second" exact activeClassName={styles.active}>Profile Page</NavLink>
+        <NavLink to="/second/about" activeClassName={styles.active}>About Page</NavLink>
+        <Switch>
+          {SecondPageRoutes.map((route, key) =>
+            <CustomPropsRoute {...route} key={key} initialData={this.props.initialData} />
+          )}
+        </Switch>
       </div>
     )
   }

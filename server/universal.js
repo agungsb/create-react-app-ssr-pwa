@@ -14,7 +14,7 @@ const client = new ApiClient();
 
 const { matchPath } = require('react-router-dom')
 
-const TheRoutes = require('utils/TheRoutes')
+const { MainRoutes } = require('utils/TheRoutes')
 
 module.exports = function universalLoader(req, res) {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html')
@@ -95,9 +95,7 @@ module.exports = function universalLoader(req, res) {
 
     const store = configureStore(client);
     let promises = [];
-
-    // console.log('TheRoutes', TheRoutes);
-    TheRoutes.some(route => {
+    MainRoutes.some(route => {
       // use `matchPath` here
       const match = matchPath(req.url, route);
       if (match) {

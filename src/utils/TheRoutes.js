@@ -1,8 +1,24 @@
-import FirstPage from 'containers/FirstPage/FirstPage';
-import NotFound from 'containers/NotFound/NotFound';
-import SecondPage from 'containers/SecondPage/SecondPage';
+import {
+  AboutPage,
+  FirstPage,
+  NotFound,
+  ProfilePage,
+  SecondPage
+} from 'containers';
 
-const TheRoutes = [
+export const SecondPageRoutes = [
+  {
+    path: '/second',
+    exact: true,
+    component: ProfilePage,
+  },
+  {
+    path: '/second/about',
+    component: AboutPage
+  }
+]
+
+export const MainRoutes = [
   {
     path: '/',
     exact: true,
@@ -10,11 +26,9 @@ const TheRoutes = [
   },
   {
     path: '/second',
-    component: SecondPage,
+    component: SecondPage
   },
   {
     component: NotFound
   }
 ];
-
-export default TheRoutes;

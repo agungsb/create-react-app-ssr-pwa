@@ -1,3 +1,7 @@
-.bold{
-  font-weight: bold
+.bold {
+  font-weight: bold;
+}
+.active {
+  text-decoration: bold;
+  color: red;
 }
