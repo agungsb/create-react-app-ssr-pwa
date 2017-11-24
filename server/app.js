@@ -21,7 +21,7 @@ try {
 require('babel-register')(config);
 
 // routes
-const index = require('./routes/index')
+// const index = require('./routes/index')
 const api = require('./routes/api')
 const universalLoader = require('./universal')
 
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // Setup logger
 app.use(morgan('combined'))
 
-app.use('/', index)
+// app.use('/', index)
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')))
