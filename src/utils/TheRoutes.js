@@ -6,6 +6,8 @@ import {
   SecondPage
 } from 'containers';
 
+import AsyncAboutPage from './../routes/AsyncAboutPage';
+
 export const SecondPageRoutes = [
   {
     path: '/second',
@@ -14,7 +16,7 @@ export const SecondPageRoutes = [
   },
   {
     path: '/second/about',
-    component: AboutPage
+    component: AsyncAboutPage
   }
 ]
 
