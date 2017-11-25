@@ -55,7 +55,7 @@ module.exports = function universalLoader(req, res) {
             .replace('<meta/>', head.meta)
             .replace('<link/>', head.link)
             .replace('{{SSR}}', markup)
-            .replace('{{WINDOW_DATA}}', JSON.stringify(data));
+            .replace('[\'WINDOW_DATA\']', JSON.stringify(data));
           res.send(RenderedApp)
         }
       }, (error) => {

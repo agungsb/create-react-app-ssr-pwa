@@ -7,7 +7,14 @@
   "plugins": [
     "add-module-exports",
     "transform-runtime",
-    "transform-class-properties"
+    "transform-class-properties",
+    [
+      "import-inspector",
+      {
+        "serverSideRequirePath": true,
+        "webpackRequireWeakId": true
+      }
+    ]
   ],
   "env": {
     "test": {
@@ -22,6 +29,13 @@
           {
             "config": "./config/webpack.config.dev.js"
           }
+        ],
+        [
+          "import-inspector",
+          {
+            "serverSideRequirePath": true,
+            "webpackRequireWeakId": true
+          }
         ]
       ]
     },
@@ -31,6 +45,13 @@
           "babel-plugin-webpack-alias",
           {
             "config": "./config/webpack.config.prod.js"
+          }
+        ],
+        [
+          "import-inspector",
+          {
+            "serverSideRequirePath": true,
+            "webpackRequireWeakId": true
           }
         ]
       ]

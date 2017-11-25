@@ -22,6 +22,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App initialData={window.DATA} />
     </BrowserRouter>
-  </Provider>, document.getElementById('root')
+  </Provider>,
+  document.getElementById('root')
 );
 // registerServiceWorker();
